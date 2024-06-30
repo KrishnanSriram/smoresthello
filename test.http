@@ -1,0 +1,21 @@
+###
+GET http://127.0.0.1:5000/api/products
+
+###
+GET http://127.0.0.1:5000/api/products/2
+
+###
+GET http://127.0.0.1:5000/api/products/4
+
+###
+POST http://127.0.0.1:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Product 4", 
+  "price": 40.01, 
+  "description": "Description 4"
+}
+
+###
+DELETE http://127.0.0.1:5000/api/products/4
