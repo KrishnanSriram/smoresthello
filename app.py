@@ -3,6 +3,7 @@ from flask_smorest import Api
 import logging
 import sys
 from api.products.routes import blp as products_blp, init_products
+from config import AppConfig
 
 # Configure logging
 logging.basicConfig(
@@ -15,13 +16,7 @@ logging.basicConfig(
 
 
 app = Flask(__name__)
-app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['API_TITLE'] = 'Flask-Smorest API'
-app.config['API_VERSION'] = 'v1'
-app.config['OPENAPI_VERSION'] = '3.0.3'
-app.config['OPENAPI_URL_PREFIX'] = '/docs'
-app.config['OPENAPI_SWAGGER_UI_PATH'] = '/'
-app.config['OPENAPI_SWAGGER_UI_URL'] = 'https://cdn.jsdelivr.net/npm/swagger-ui-dist/'
+app.config.from_object(AppConfig)
 
 api = Api(app)
 api.register_blueprint(products_blp)
